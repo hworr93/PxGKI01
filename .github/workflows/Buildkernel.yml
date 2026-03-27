@@ -188,6 +188,11 @@ jobs:
          rm Image
          mv oImage Image
          echo -e "\e[33m[Done]\e[0m" KPM feature is enabled
+
+      - name: Find Kernel Image
+        run: |
+         find /home/runner/work/PxGKI -name "Image"
+  
          
       - name: Output kernel
         run: |
