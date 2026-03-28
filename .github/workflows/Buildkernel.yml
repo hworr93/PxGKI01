@@ -36,7 +36,6 @@ on:
         default: false
         type: boolean
 
-
 jobs:
   Details:
     runs-on: ubuntu-latest
@@ -255,21 +254,20 @@ jobs:
       - name: Create AnyKernel3
         run: |
          cd Buildkernel/SukiSU_patch/AnyKernel3
-         cp /home/runner/work/PxGKI/PxGKI/Buildkernel/dist/Image /home/runner/work/PxGKI/PxGKI/Buildkernel/SukiSU_patch/AnyKernel3/
+         cp ../../dist/Image ./
          zip -r "android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}-AnyKernel3.zip" ./*
 
       - name: Output AnyKernel3
         run: |
          cd Buildkernel
-         mkdir patched
-         cd patched
-         cp /home/runner/work/PxGKI/PxGKI/Buildkernel/dist/kernel /home/runner/work/PxGKI/PxGKI/Buildkernel/patched/
-         cp /home/runner/work/PxGKI/PxGKI/Buildkernel/SukiSU_patch/AnyKernel3/android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}-AnyKernel3.zip /home/runner/work/PxGKI/PxGKI/Buildkernel/patched/
+         mkdir -p patched
+         cp dist/kernel patched/
+         cp SukiSU_patch/AnyKernel3/android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}-AnyKernel3.zip patched/
 
       - name: Upload Kernel and AnyKernel3
         uses: actions/upload-artifact@v5
         with:
-          name: Kernel&AnyKernel3-android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}
+          name: Kernel_AnyKernel3-android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}
           path: |
             Buildkernel/patched/kernel
             Buildkernel/patched/*.zip
