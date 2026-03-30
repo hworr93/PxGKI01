@@ -88,11 +88,6 @@ jobs:
             fi
           fi
 
-      - name: Set up SukiSU-Ultra
-        run: |
-         cd Buildkernel
-         curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s builtin
-        
       - name: Set up susfs
         run: |
          cd Buildkernel
@@ -102,7 +97,12 @@ jobs:
          cp susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
          cd common
          patch -p1 -F 3 < 50_add_susfs_in_gki-android${{ github.event.inputs.Android_Release }}-${{ github.event.inputs.Kernel_Version }}.patch
-           
+
+      - name: Set up SukiSU-Ultra
+        run: |
+         cd Buildkernel
+         curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s builtin
+         
       - name: Add configuration to kernel
         run: |
          cd Buildkernel
@@ -271,3 +271,4 @@ jobs:
           path: |
             Buildkernel/patched/kernel
             Buildkernel/patched/*.zip
+            
