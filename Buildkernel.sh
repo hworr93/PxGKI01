@@ -10,17 +10,17 @@ export Kernel_Version="6.6"
 
 # Kernel Security Patch or lts (latest)
 # Recommend same as stock kernel
-export Security_Patch="2025-09"
+export Security_Patch="2026-01"
 
 # Kernel Suffix
 # Set (Kernel_Suffix="") meaning delete dirty suffix
 # or using custom suffix to replace it
 # Recommend same as stock kernel
-export Kernel_Suffix="g4b48560cd07d-ab14239520-4k"
+export Kernel_Suffix="g6eb5b2a8c46b-ab14739656-4k"
 
 # Kernel Build Timestamp
 # Recommend same as stock kernel
-export Kernel_Time="Thu Oct  9 05:51:31 UTC 2025"
+export Kernel_Time="Mon Jan  19 02:06:09 UTC 2026"
 
 echo
 echo -e "\e[32mKernel information preview\e[0m"
