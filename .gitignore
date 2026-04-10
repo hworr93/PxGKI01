@@ -1,0 +1,15 @@
+Buildkernel
+add-kpm.sh
+build-kernel.sh
+config-kernel.sh
+create-anykernel3.sh
+gki-patches.sh
+kpm-patch.sh
+output-anykernel3.sh
+output-kernel.sh
+setup-anykernel3.sh
+setup-build-timestamp.sh
+setup-kernel-suffix.sh
+setup-sukisu-ultra.sh
+setup-susfs.sh
+sync-kernel.sh
