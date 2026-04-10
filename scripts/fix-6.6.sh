@@ -1,4 +1,5 @@
 cd Buildkernel/common
+
 FORMATTED_BRANCH="android15-6.6"
 # Fake Patch to fix failures
 fake_patched=0
@@ -9,7 +10,6 @@ if [ "$FORMATTED_BRANCH" = "android15-6.6" ]; then
     fake_patched=1
   fi
 fi
-  
 if [ "$fake_patched" = 1 ]; then
   if [ "$FORMATTED_BRANCH" = "android15-6.6" ]; then
     if grep -qxF $'\tunsigned int nr_subpages = __PAGE_SIZE / PAGE_SIZE;' ./fs/proc/task_mmu.c; then
