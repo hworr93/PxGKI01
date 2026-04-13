@@ -197,6 +197,24 @@ jobs:
          sed -i 's/check_defconfig//' ./common/build.config.gki
          echo -e "\e[33m[Done]\e[0m" Add configuration to kernel
       
+      - name: Apply custom GitHub patches
+        run: |
+         cd Buildkernel/common
+         
+         # Clone your patch repository
+         git clone https://github.com/worr-har21/patches.git lxc_patches
+         
+         # Loop through and apply all .patch files
+         for patch_file in lxc_patches/*.patch; do
+           echo "Applying $patch_file"
+           patch -p1 -F 3 < "$patch_file"
+         done
+         
+         # Clean up the cloned repo to keep the workspace tidy
+         rm -rf lxc_patches
+         echo -e "\e[33m[Done]\e[0m" Applied custom patches
+         
+      
       - name: Add KPM configuration to kernel
         if: ${{inputs.Enable_KPM_Feature }}
         run: |
